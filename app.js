@@ -1,5 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
@@ -9,12 +10,7 @@ if (app.get("env") !== "production") {
   app.use(logger("dev"));
 }
 
-app.use("/test", (req, res, next) => {
-  res.status(200).json({
-    status: "success",
-    message: "Welcome to the Server-side",
-  });
-});
+app.use("/api/v1/user/", userRouter);
 
 // catch 404 and forward to error handler
 app.all("*", (req, res, next) => {
