@@ -41,7 +41,7 @@ Router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //GET USER
-Router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+Router.get("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, ...others } = user._doc;
